@@ -11,11 +11,13 @@ public class PostsSaveRequestDto {
     private String title;
     private String content;
     private String author;
+    private String description;
     @Builder
-    public PostsSaveRequestDto(String title, String content, String author){
+    public PostsSaveRequestDto(String title, String content, String author, String description){
         this.title = title;
         this.content = content;
         this.author = author;
+        this.description = description;
     }
 
     public Posts toEntity(){
@@ -23,6 +25,7 @@ public class PostsSaveRequestDto {
                 .title(title)
                 .content(content)
                 .author(author)
+                .description(description)
                 .build();
     }
 }

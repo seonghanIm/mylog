@@ -26,7 +26,7 @@ public class PostsService {
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto){
         Posts posts = postsRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
-        posts.update(requestDto.getTitle(), requestDto.getContent());
+        posts.update(requestDto.getTitle(), requestDto.getContent(), requestDto.getDescription());
 
         return id;
     }
@@ -41,6 +41,7 @@ public class PostsService {
         List<Posts> postsList = postsRepository.findAll();
         for(int i=0;i< postsList.size();i++){
             list.add(new PostsResponseDto(postsList.get(i)));
+            System.out.println(postsList.get(i));
         }
 
         return list;
